@@ -35,3 +35,13 @@ docker run --rm \
     sstc/scratch \
     ./main
 ```
+
+## Cross compiling
+
+```bash
+# go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+
+# rust
+cargo build --target x86_64-unknown-linux-musl --release
+```
