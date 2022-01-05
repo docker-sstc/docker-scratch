@@ -3,7 +3,7 @@
 For someone want to solve this:
 
 ```console
-$ docker run -d \
+$ docker run --rm \
     -v /path/to/target:/app \
     -w /app
     scratch \
@@ -16,9 +16,21 @@ See 'docker run --help'
 
 Now you could do this instead:
 
-```sh
-$ docker run -d \
+```bash
+docker run --rm \
     -v /path/to/target:/app \
+    -w /app
+    sstc/scratch \
+    ./main
+```
+
+## Timezone for Golang
+
+```bash
+docker run --rm \
+    -v /usr/share/zoneinfo:/usr/share/zoneinfo:ro \
+    -e TZ=Asia/Taipei \
+    -v /path/to/target/main:/app/main \
     -w /app
     sstc/scratch \
     ./main
